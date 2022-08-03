@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/seacrh}" method="get">
+        <input type="text" name="symbol" th:value="${symbol}"  placeholder="Find by stockName and stockPrice" size="50" >
+        <button type="submit" class="btn btn-info" >Search</button>
+    </form>
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">symbol</th>
+            <th scope="col">getStock_Name</th>
+            <th scope="col">getStock_Price</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p : ${banks}" >
+                <th scope="row" th:text="${p.symbol}"></th>
+                <td th:text="${p.stock_name}"></td>
+                <td th:text="${p.stock_price}"></td>
+            </tr>
+            <tr th:each="p : ${names}" >
+                <th scope="row" th:text="${p.symbol}"></th>
+                <td th:text="${p.stock_name}"></td>
+                <td th:text="${p.stock_price}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
